@@ -1,0 +1,39 @@
+
+  
+  .CreateAccount-display {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3%;
+    min-height: 100vh;
+    min-width: 50%;
+  }
+
+  .Form-display {
+      width: 50%;
+  }
+
+  .Header-display {
+    
+    font-size: calc(30px + 2vmin);
+    color: rgb(255, 255, 255);
+    margin-bottom: 5%;
+  }
+
+  .Text-display {
+    font-size: calc(14px + 1vmin);
+    color: rgba(255, 255, 255, 0.76);
+    margin-bottom: 8%;
+    
+  }
+
+  .TextInputAdj-Style {
+   
+      margin-right: 20px;
+  }
+
+.TextInputRow-Style {
+    margin-bottom:7%;
+}
+

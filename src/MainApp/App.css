@@ -1,0 +1,23 @@
+.App {
+  
+  background-color: rgb(0, 30, 60);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  
+}
+
+.MuiInputBase-input.MuiOutlinedInput-input {
+  color:rgba(255, 255, 255, 0.76);
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButton-outlinedPrimary {
+  margin-right:15px;
+}
+
+ 
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-outlined.Mui-focused.Mui-focused{
+  color: rgba(255, 255, 255, 0.76);
+}

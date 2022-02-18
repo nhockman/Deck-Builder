@@ -1,0 +1,33 @@
+
+  
+  .Login-display {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .Header-display {
+    
+    font-size: calc(30px + 2vmin);
+    color: rgb(255, 255, 255);
+    margin-bottom: 8%;
+  }
+
+  .Text-display {
+    font-size: calc(14px + 1vmin);
+    color: rgba(255, 255, 255, 0.76);
+    margin-bottom: 10%;
+    
+  }
+
+  .TextInput-Style {
+      margin-bottom:7%;
+  }
+
+.Error-Style {
+  color:red;
+  font-size: calc(6px + 1vmin);
+}
