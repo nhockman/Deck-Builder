@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TextField, useScrollTrigger } from '@material-ui/core';
+import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogContentText } from '@material-ui/core';
 
 import './CreateAccountPage.css';
 import { CreateAccount } from '../../Business/CreateAccount';
@@ -29,6 +29,8 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
     const [confirmPasswordError, setConfirmPasswordError] = useState(false);
     const [passwordMatchError, setPasswordMatchError] = useState(false);
     const [birthDateError, setBirthDateError] = useState(false);
+
+    const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     const handleLastName = (e) => {
         if (lastNameError) {
@@ -102,14 +104,21 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
     }
 
 
+    const handleSuccessModalClose = () => {
+        setSuccessModalOpen(false);
+    }
 
 
-    const handleCreateAccountClick = () => {
+    const handleCreateAccountClick = async () => {
         const valid = validate();
 
         if (valid) {
             var dataObj = new NewAccount(firstName,lastName,email,phone,birthDate,username,password);
-            CreateAccount(dataObj);
+            var response = await CreateAccount(dataObj);
+            console.log(response);
+            if (response.Msg === "Success") {
+                setSuccessModalOpen(true);
+            }
         }    
     };
 
@@ -171,7 +180,6 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
         return validInputs;
     }
 
-        console.log(sessionID);
     
         return(
             <div className='CreateAccount-display'>
@@ -253,7 +261,27 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
                 <div>    
                     <Button variant='outlined' color='primary' onClick={handleCreateAccountClick}>Create Account</Button>
                     <Button variant='outlined' color='secondary' onClick={handleCancelClick}>Cancel</Button>
-                </div>                 
+                </div>  
+
+                <Dialog
+                    open={successModalOpen}
+                    onClose={handleSuccessModalClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                     <DialogTitle id="alert-dialog-title">
+          {"Account Creation Success!"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Click anywhere outsite this window to close
+          </DialogContentText>
+        </DialogContent>
+
+                </Dialog>
+                    
+                  
+
             </div>           
         );
 }

@@ -1,9 +1,9 @@
 
 
 const IsValid = ( text ) => {
-    console.log(text);
+ 
     if (text === null || text === "") {
-        console.log("in false");
+       
         return false;
     }
 

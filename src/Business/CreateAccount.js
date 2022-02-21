@@ -4,8 +4,9 @@ const CreateAccount = async ( accObj ) => {
     console.log(accObj);
 
     const res = await Axios.post("http://localhost:3003/api/account/createNewAccount", accObj);
-    const newAccountId = res.data;
-    console.log(newAccountId);
+    const createRes = res.data;
+    console.log(createRes);
+    return createRes;
 }
 
 export { CreateAccount }
