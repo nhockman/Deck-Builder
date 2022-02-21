@@ -21,3 +21,11 @@
 .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-outlined.Mui-focused.Mui-focused{
   color: rgba(255, 255, 255, 0.76);
 }
+
+.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined.MuiFormLabel-root.MuiFormLabel-colorPrimary.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  color: rgba(245,245,245,0.6) 
+}
+
+.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border-color:rgb(131, 27, 179) !important;
+}

@@ -31,3 +31,13 @@
   color:red;
   font-size: calc(6px + 1vmin);
 }
+
+.Paragraph-display {
+  font-size: calc(6px + 1vmin);
+  color: rgba(255, 255, 255, 0.76);
+  margin-bottom: 5%;
+} 
+
+.Button-display {
+  margin-bottom: 7%;
+} 

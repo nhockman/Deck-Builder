@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogContentText } from '@material-ui/core';
+import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogContentText, Alert } from '@mui/material';
 
 import './CreateAccountPage.css';
 import { CreateAccount } from '../../Business/CreateAccount';
@@ -31,6 +31,7 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
     const [birthDateError, setBirthDateError] = useState(false);
 
     const [successModalOpen, setSuccessModalOpen] = useState(false);
+    const [errorAlertOpen, setErrorAlertOpen] = useState(false);
 
     const handleLastName = (e) => {
         if (lastNameError) {
@@ -118,6 +119,8 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
             console.log(response);
             if (response.Msg === "Success") {
                 setSuccessModalOpen(true);
+            } else if (response.Msg === "Error: Duplicate Account") {
+                setErrorAlertOpen(true);
             }
         }    
     };
@@ -183,6 +186,8 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
     
         return(
             <div className='CreateAccount-display'>
+                
+
                 <div className='Header-display'>
                     DeckBuilder.Test Create Account    
                 </div>
@@ -258,7 +263,7 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
                 </div>
 
                 
-                <div>    
+                <div className='ButtonInputRow-Style'>    
                     <Button variant='outlined' color='primary' onClick={handleCreateAccountClick}>Create Account</Button>
                     <Button variant='outlined' color='secondary' onClick={handleCancelClick}>Cancel</Button>
                 </div>  
@@ -269,17 +274,21 @@ export const CreateAccountPage = ({ sessionID, setcurrentPage }) => {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                     <DialogTitle id="alert-dialog-title">
-          {"Account Creation Success!"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Click anywhere outsite this window to close
-          </DialogContentText>
-        </DialogContent>
-
-                </Dialog>
+                    <DialogTitle id="alert-dialog-title">
+                        {"Account Creation Success!"}
+                    </DialogTitle>
                     
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Click anywhere outsite this window to close
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
+
+                {errorAlertOpen && <div className='AlertInputRow-Style'>
+                    <Alert severity="error">Error: Failed Creating Account</Alert>  
+                </div>}
+                 
                   
 
             </div>           

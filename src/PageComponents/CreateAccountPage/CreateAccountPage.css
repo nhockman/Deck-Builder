@@ -18,13 +18,13 @@
     
     font-size: calc(30px + 2vmin);
     color: rgb(255, 255, 255);
-    margin-bottom: 5%;
+    margin-bottom: 4%;
   }
 
   .Text-display {
-    font-size: calc(14px + 1vmin);
+    font-size: calc(13px + 1vmin);
     color: rgba(255, 255, 255, 0.76);
-    margin-bottom: 8%;
+    margin-bottom: 6%;
     
   }
 
@@ -37,3 +37,10 @@
     margin-bottom:7%;
 }
 
+.ButtonInputRow-Style {
+  margin-bottom:3%;
+}
+
+.AlertInputRow-Style {
+  margin-bottom:1%;
+}

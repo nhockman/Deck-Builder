@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField } from '@mui/material';
 import './MainLoginPage.css';
 import Axios from "axios";
 import { useState } from 'react';
@@ -98,7 +98,7 @@ export const MainLoginPage = ({ sessionID, setloginStatus, setcurrentPage }) => 
                         variant='outlined' 
                         label='Username' 
                         color='primary' 
-                        focused fullWidth 
+                         fullWidth 
                         onChange={handleUsername}></TextField>
 
                         {usernameError && <div className='Error-Style'>
@@ -113,7 +113,7 @@ export const MainLoginPage = ({ sessionID, setloginStatus, setcurrentPage }) => 
                         variant='outlined' 
                         label='Password' 
                         color='primary' 
-                        focused 
+                         
                         fullWidth 
                         type={"password"} 
                         onChange={handlePassword}></TextField>
@@ -124,10 +124,14 @@ export const MainLoginPage = ({ sessionID, setloginStatus, setcurrentPage }) => 
                     </div>
                 </div>
                 
-                <div>    
+                <div className='Button-display'>    
                     <Button variant='outlined' color='primary' onClick={handleLoginClick}>Login</Button>
                     <Button variant='outlined' color='secondary' onClick={handleCreateAccountClick}>Create Account</Button>
-                </div>                              
+                </div>  
+
+                <div className='Paragraph-display'>
+                    A learning and passion project created and developed by Nathaniel Hockman
+                </div>                            
             </div>           
         );
    

@@ -1,0 +1,89 @@
+ 
+  .Search-display {
+    height: 100%; 
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Header-display {
+    
+    font-size: calc(30px + 2vmin);
+    color: rgb(255, 255, 255);
+    margin-bottom: 8%;
+  }
+
+  .Text-display {
+    font-size: calc(14px + 1vmin);
+    color: rgba(255, 255, 255, 0.76);
+    margin-bottom: 10%;
+    
+  }
+
+ 
+
+  .TextInput-Style {
+      margin-bottom:7%;
+  }
+
+.Error-Style {
+  color:red;
+  font-size: calc(6px + 1vmin);
+}
+
+.Paragraph-display {
+  font-size: calc(6px + 1vmin);
+  color: rgba(255, 255, 255, 0.76);
+  margin-bottom: 5%;
+} 
+
+.Button-display {
+  margin-bottom: 7%;
+} 
+
+
+.AppBar {
+    display: flex;
+}
+
+.IconStyle {
+    width: 30;
+    height: 30;
+}
+
+.MuiDataGrid-main.css-204u17-MuiDataGrid-main {
+    color: whitesmoke !important;
+}
+
+.MuiDataGrid-root.css-18lolh3-MuiDataGrid-root {
+    color: whitesmoke !important;
+}
+
+.MuiTablePagination-displayedRows.css-levciy-MuiTablePagination-displayedRows {
+    color: whitesmoke !important;
+}
+
+
+.MuiTablePagination-root.css-rtrcn9-MuiTablePagination-root {
+ color: whitesmoke !important;
+}
+
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall.MuiDataGrid-menuIconButton.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root {
+    color: whitesmoke !important;
+}
+
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root {
+    color: whitesmoke !important;
+}
+
+.MuiCheckbox-root.MuiCheckbox-colorPrimary.MuiButtonBase-root.MuiCheckbox-root.MuiCheckbox-colorPrimary.PrivateSwitchBase-root.MuiDataGrid-checkboxInput.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+    color: whitesmoke !important;
+}
+
+
+.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined.MuiFormLabel-root.MuiFormLabel-colorSecondary.css-1v4qvbo-MuiFormLabel-root-MuiInputLabel-root {
+    color: rgba(245,245,245,0.6)  !important;
+}

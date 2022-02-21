@@ -62,7 +62,7 @@ function App() {
         case "HomePage":
           return(
             <div className="App">
-                <HomePage sessionID={sessionID} setcurrentPage={setcurrentPage}/>
+                <HomePage sessionID={sessionID} setcurrentPage={setcurrentPage} setloginStatus={setloginStatus}/>
             </div>
           );
 
