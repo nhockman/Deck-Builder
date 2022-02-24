@@ -99,6 +99,8 @@ export const HomePage = ({ sessionID, setloginStatus, setcurrentPage }) => {
                     </Toolbar>
                 </AppBar>    
 
+                
+
                 {childPage == "Home" && <HomePageContent sessionID={sessionID}/>}
 
                 {childPage == "Search" && <SearchPage sessionID={sessionID}/>}

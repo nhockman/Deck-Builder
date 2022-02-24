@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Button, TextField, InputLabel, MenuItem, FormControl, Select, Box, Checkbox, FormControlLabel} from '@mui/material';
+import { Button, TextField, InputLabel, MenuItem, FormControl, Select, Box, Checkbox, FormControlLabel, FormGroup, FormLabel} from '@mui/material';
 import './SearchPage.css';
 import { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import { IsValid } from '../../../../Business/Helpers/Validation';
 
-import { pink } from '@mui/material/colors';
+import { pink, green, red, blue, yellow, grey, purple } from '@mui/material/colors';
 
 
 const columns = [
@@ -66,34 +67,101 @@ const columns = [
 
 export const SearchPage = ({ sessionID }) => {
     const [CMC, setCMC] = useState('');
-    const [checked, setChecked] = React.useState([true, false]);
+
+    //white, black, blue, red, green
+    const [selectedColors, setSelectedColors] = useState([false, false, false, false, false]);
+
+    const [cardNameSearch, setCardNameSearch] = useState("");
+
+    const [checkedBlue, setCheckedBlue] = React.useState([true, false]);
+    const [checkedBlack, setCheckedBlack] = React.useState([true, false]);
+    const [checkedWhite, setCheckedWhite] = React.useState([true, false]);
+    const [checkedRed, setCheckedRed] = React.useState([true, false]);
+    const [checkedGreen, setCheckedGreen] = React.useState([true, false]);
 
         const handleCMCDropdown = (event) => {
             setCMC(event.target.value);
         }
-    
-        const handleNameSearch = () => {
-
+        const handleNameSearch = (event) => {
+            setCardNameSearch(event.target.value);
         }
-
         const handleRedCheckBox = (event) => {
-            setChecked([event.target.checked, checked[1]]);
+            setCheckedRed([checkedRed[0], event.target.checked]);
+            setSelectedColors([checkedWhite[1],checkedBlack[1],checkedBlue[1],event.target.checked,checkedGreen[1]]);
+        }
+        const handleBlueCheckBox = (event) => {
+            setCheckedBlue([checkedBlue[0], event.target.checked]);
+            setSelectedColors([checkedWhite[1],checkedBlack[1],event.target.checked,checkedRed[1],checkedGreen[1]]);
+        }
+        const handleBlackCheckBox = (event) => {
+            setCheckedBlack([checkedBlack[0], event.target.checked]);
+            setSelectedColors([checkedWhite[1],event.target.checked,checkedBlue[1],checkedRed[1],checkedGreen[1]]);
+        }
+        const handleWhiteCheckBox = (event) => {
+            setCheckedWhite([checkedWhite[0], event.target.checked]);
+            setSelectedColors([event.target.checked,checkedBlack[1],checkedBlue[1],checkedRed[1],checkedGreen[1]]);
+        }
+        const handleGreenCheckBox = (event) => {
+            setCheckedGreen([checkedGreen[0], event.target.checked]);
+            setSelectedColors([checkedWhite[1],checkedBlack[1],checkedBlue[1],checkedRed[1],event.target.checked]);
         }
 
-        console.log(sessionID);
+
+        const handleSearch = () => {
+            const validInputs = validate();
+
+            console.log(validInputs);
+        }
+
+        const handleClear = (event) => {
+            setCMC("");
+
+            setCardNameSearch("");
+            document.getElementById("search").value="";
+
+            setSelectedColors([false,false,false,false,false]);
+            setCheckedGreen([checkedGreen[0],false]);
+            setCheckedWhite([checkedWhite[0],false]);
+            setCheckedBlack([checkedBlack[0],false]);
+            setCheckedBlue([checkedBlue[0],false]);
+            setCheckedRed([checkedRed[0],false]);
+
+
+
+        }
+
+
+        const validate = () => {
+            let valid = false;
+
+            if (IsValid(CMC)
+             || IsValid(cardNameSearch) 
+             || selectedColors[0] 
+             || selectedColors[1] 
+             || selectedColors[2] 
+             || selectedColors[3] 
+             || selectedColors[4])
+             {
+                valid = true;
+             }
+
+             return valid;
+        }
+
+        //console.log(sessionID);
     
         return(
             <div className='Search-display'>
-                <div style={{ height: 100, width: '85%' }}>
+                <div style={{ height: '15%', width: '85%' }}>
                     <FormControl sx={{minWidth: 320}}>
-                        <TextField id="outlined-search" label="Card Name" type="search" color="secondary" onChange={handleNameSearch}/>
+                        <TextField id="search" label="Card Name" type="search" color="secondary" onChange={handleNameSearch}/>
                     </FormControl>
                     
                     <FormControl sx={{minWidth: 100, marginLeft: '2%'}}>
                         <InputLabel id="simple-select-label">CMC</InputLabel>
                         <Select
                             labelId="simple-select-label"
-                            id="simple-select"
+                            id="CMC"
                             value={CMC}
                             label="Age"
                             onChange={handleCMCDropdown}
@@ -119,21 +187,82 @@ export const SearchPage = ({ sessionID }) => {
                     </FormControl>
                 
                  
-                    <FormControlLabel
-                            label="Child 1"
-                            control={<Checkbox checked={checked[0]} onChange={handleRedCheckBox} sx={{
-                                color: pink[800],
-                                '&.Mui-checked': {
-                                    color: pink[600],
-                                },
-                                }}/>}
-                        />
+                    <FormControl sx={{ ml: 3, borderColor: purple[500], borderWidth: 2, border: '1px dashed purple' }} component="fieldset" variant="standard">
+                        <FormLabel sx={{color: purple[500]}}  component="legend">Card Color/s</FormLabel>
+                        <FormGroup sx={{pl: 1}}>
+                            <FormControlLabel sx={{color: yellow[200]}}
+                                control={
+                                <Checkbox checked={checkedWhite[1]} onChange={handleWhiteCheckBox} name="white" sx={{
+                                    color: yellow[200],
+                                    '&.Mui-checked': {
+                                      color: yellow[300],
+                                    },
+                                  }} />
+                                }
+                                label="White"
+                            />
+                            <FormControlLabel sx={{color: blue[300]}}
+                                control={
+                                <Checkbox checked={checkedBlue[1]} onChange={handleBlueCheckBox} name="blue" sx={{
+                                    color: blue[400],
+                                    '&.Mui-checked': {
+                                      color: blue[500],
+                                    },
+                                  }}/>
+                                }
+                                label="Blue"
+                            />
+                            <FormControlLabel sx={{color: grey[500]}}
+                                control={
+                                <Checkbox checked={checkedBlack[1]} onChange={handleBlackCheckBox} name="black" sx={{
+                                    color: grey[600],
+                                    '&.Mui-checked': {
+                                      color: grey[700],
+                                    },
+                                  }}/>
+                                }
+                                label="Black"
+                            />
+                            <FormControlLabel sx={{color: red[500]}}
+                                control={
+                                <Checkbox checked={checkedRed[1]} onChange={handleRedCheckBox} name="red" sx={{
+                                    color: red[600],
+                                    '&.Mui-checked': {
+                                      color: red[700],
+                                    },
+                                  }}/>
+                                }
+                                label="Red"
+                            />
+                            <FormControlLabel sx={{color: green[500]}}
+                                control={
+                                <Checkbox checked={checkedGreen[1]} onChange={handleGreenCheckBox} name="green" sx={{
+                                    color: green[600],
+                                    '&.Mui-checked': {
+                                      color: green[700],
+                                    },
+                                  }}/>
+                                }
+                                label="Green"
+                            />
+                        </FormGroup>
+                      
+                    </FormControl>
+
+                
+                  <Box sx={{ml:4}}>
+                      <Button variant='outlined' color='primary' onClick={handleSearch}>Search</Button>
+                    <Button variant='outlined' color='secondary' onClick={handleClear}>Clear</Button>
+                  </Box>
+                    
+                  
                    
                   
-                </div>
+            </div>
+            
 
-
-                <div style={{ height: 600, width: '85%' }}>
+            <Box sx ={{ mt: '2%', height: 600, width: '85%' }}>
+            <FormLabel sx={{color: purple[500]}}  component="legend">Search Results</FormLabel>
                     <DataGrid
                         rows={rows}
                         columns={columns}
@@ -141,7 +270,9 @@ export const SearchPage = ({ sessionID }) => {
                         rowsPerPageOptions={[9]}
                         checkboxSelection
                     />
-                </div>  
+               
+            </Box>
+                
             </div>
 
                     
